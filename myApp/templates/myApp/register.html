@@ -1,0 +1,12 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}Register Talent{% endblock %}
+
+{% block content %}
+<h1>Register as Talent</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
