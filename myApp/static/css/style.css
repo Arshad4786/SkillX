@@ -124,4 +124,35 @@ body {
  button[type="submit"]:hover {
      background-color: #45a049;
  }
+
+ body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #1D4ED8; /* Blue */
+    color: white;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2563EB;
+}
+
  

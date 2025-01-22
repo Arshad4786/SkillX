@@ -1,12 +1,31 @@
 {% extends 'myApp/base.html' %}
 
-{% block title %}Hire Talent{% endblock %}
+{% block title %}Send Hire Request{% endblock %}
 
 {% block content %}
-<h1>Hire {{ talent.name }}</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit Hire Request</button>
-</form>
+<div class="container mx-auto px-6 py-10">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6">Send Hire Request to {{ talent.name }}</h2>
+
+    <div class="bg-white p-6 rounded shadow-md">
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <h3 class="text-xl font-bold">{{ talent.name }}</h3>
+                <p>Email: {{ talent.email }}</p>
+                <p>Description: {{ talent.description }}</p>
+            </div>
+            {% if talent.profile_photo %}
+                <img src="{{ talent.profile_photo.url }}" alt="{{ talent.name }}" class="w-32 h-32 rounded-full">
+            {% endif %}
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Form for the message -->
+
+            <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-400">
+                Submit Hire Request
+            </button>
+        </form>
+    </div>
+</div>
 {% endblock %}

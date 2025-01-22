@@ -1,33 +1,75 @@
 {% extends 'myApp/base.html' %}
 
-{% block title %}Client View{% endblock %}
+{% block title %}Client Dashboard{% endblock %}
 
 {% block content %}
-<div class="max-w-6xl mx-auto p-8">
-    <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Approved Talents</h1>
-    
-    {% if approved_talents %}
-        <div class="space-y-4">
-            {% for talent in approved_talents %}
-                <div class="bg-white p-6 rounded-lg shadow-md mb-4">
-                    <h2 class="text-2xl font-semibold">{{ talent.name }}</h2>
-                    <p class="text-lg">{{ talent.skills }}</p>
-                    <p class="text-lg">{{ talent.description }}</p>
-                    <img src="{{ talent.profile_photo.url }}" alt="{{ talent.name }}" class="w-24 h-24 rounded-full mb-4">
+    <div class="container mx-auto px-6 py-10">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Approved Talents</h2>
 
-                    <!-- Hire Request Form -->
-                    <form method="POST" action="{% url 'send_hire_request' talent.id %}">
-                        {% csrf_token %}
-                        <textarea name="message" placeholder="Enter your message for this talent" rows="4" class="w-full p-2 border rounded"></textarea>
-                        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-400 text-lg mt-4">
-                            Send Hire Request
-                        </button>
-                    </form>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p class="text-center text-gray-500">No approved talents found.</p>
-    {% endif %}
+        {% if approved_talents %}
+            <div class="space-y-6">
+                {% for talent in approved_talents %}
+                    <div class="flex justify-between items-center bg-white p-4 rounded shadow-md">
+                        <div>
+                            <h3 class="text-xl font-bold">{{ talent.name }}</h3>
+                            <p>{{ talent.skills }}</p>
+                        </div>
+                        <div>
+                            <button 
+                                class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-400"
+                                onclick="handleHireRequest({{ talent.id }})">
+                                Send Hire Request
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No talents available at the moment.</p>
+        {% endif %}
+    </div>
+
+    <!-- Pop-up Modal -->
+<!-- Pop-up Modal -->
+<!-- Pop-up Modal -->
+<div id="loginModal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white p-8 rounded-lg w-1/3">
+        <h2 class="text-2xl font-semibold mb-4">You need to log in to send a hire request</h2>
+        <!-- If you want a form here: -->
+        <form method="POST" action="{% url 'client_signin' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-400">Login</button>
+        </form>
+        <!-- Or just the links to login and signup -->
+        <a href="{% url 'client_signin' %}" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-400">Login</a>
+        <a href="{% url 'client_signup' %}" class="ml-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-400">Sign Up</a>
+        <button class="mt-4 bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-400" onclick="closeModal()">Close</button>
+    </div>
 </div>
+
+
+
+
+<script>
+    // Handle the Hire Request button click
+    function handleHireRequest(talentId) {
+        const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};  // Directly pass the boolean value
+
+        if (isAuthenticated === "true") {
+            // If the user is logged in, proceed with the hire request process
+            window.location.href = "/hire_request/" + talentId + "/"; 
+        } else {
+            // If the user is not logged in, show the login modal
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+    }
+
+    // Close the login modal
+    function closeModal() {
+        document.getElementById('loginModal').classList.add('hidden');
+    }
+</script>
+
+
 {% endblock %}

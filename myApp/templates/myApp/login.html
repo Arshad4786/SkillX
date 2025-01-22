@@ -1,0 +1,22 @@
+{% extends 'myApp/base.html' %}
+
+{% block content %}
+    <div class="container mx-auto px-6 py-10">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Client Login</h2>
+
+        {% if messages %}
+            <div class="mb-4">
+                {% for message in messages %}
+                    <div class="bg-red-500 text-white p-3 rounded mb-2">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-400">Login</button>
+        </form>
+    </div>
+    <p>Don't have an account? <a href="{% url 'client_signup' %}">Sign Up</a></p>
+{% endblock %}

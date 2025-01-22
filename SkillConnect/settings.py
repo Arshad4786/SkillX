@@ -120,6 +120,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'myApp/static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default authentication backend
+)
+
+LOGIN_REDIRECT_URL = '/'  # Where to redirect after successful login
+LOGIN_URL = 'client_signin'  # Name of your login URL
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
