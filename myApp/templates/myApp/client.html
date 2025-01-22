@@ -1,0 +1,33 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}Client View{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto p-8">
+    <h1 class="text-3xl font-semibold text-center text-gray-800 mb-6">Approved Talents</h1>
+    
+    {% if approved_talents %}
+        <div class="space-y-4">
+            {% for talent in approved_talents %}
+                <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+                    <h2 class="text-2xl font-semibold">{{ talent.name }}</h2>
+                    <p class="text-lg">{{ talent.skills }}</p>
+                    <p class="text-lg">{{ talent.description }}</p>
+                    <img src="{{ talent.profile_photo.url }}" alt="{{ talent.name }}" class="w-24 h-24 rounded-full mb-4">
+
+                    <!-- Hire Request Form -->
+                    <form method="POST" action="{% url 'send_hire_request' talent.id %}">
+                        {% csrf_token %}
+                        <textarea name="message" placeholder="Enter your message for this talent" rows="4" class="w-full p-2 border rounded"></textarea>
+                        <button type="submit" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-400 text-lg mt-4">
+                            Send Hire Request
+                        </button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-gray-500">No approved talents found.</p>
+    {% endif %}
+</div>
+{% endblock %}

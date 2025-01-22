@@ -1,0 +1,19 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}Talent Profiles{% endblock %}
+
+{% block content %}
+<h1>Browse Talents</h1>
+<div class="talent-list">
+    {% for talent in talents %}
+        <div class="talent-profile">
+            <h3>{{ talent.name }}</h3>
+            <p>Email: {{ talent.email }}</p>
+            <p>Skills: {{ talent.skills }}</p>
+            <p>Description: {{ talent.description }}</p>
+            <img src="{{ talent.profile_photo.url }}" alt="Profile photo">
+            <a href="{% url 'hire_request' talent.id %}">Send Hire Request</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

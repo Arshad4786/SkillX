@@ -1,0 +1,12 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}Hire Talent{% endblock %}
+
+{% block content %}
+<h1>Hire {{ talent.name }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit Hire Request</button>
+</form>
+{% endblock %}

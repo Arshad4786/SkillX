@@ -1,0 +1,16 @@
+{% extends 'myApp/base.html' %}
+
+{% block title %}Browse Talents{% endblock %}
+
+{% block content %}
+<h1>Browse Talents</h1>
+<ul>
+    {% for talent in talents %}
+    <li>
+        <h2>{{ talent.name }}</h2>
+        <p>{{ talent.skills }}</p>
+        <a href="{% url 'talent_detail' talent.id %}">View Profile</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
