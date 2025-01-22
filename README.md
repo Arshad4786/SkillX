@@ -16,7 +16,7 @@
     ```
 
 4. Go to the admin by
-    [http://127.0.0.1:8000/register](http://127.0.0.1:8000/admin)
+     http://127.0.0.1:8000/admin
     username : admin
     password : TusharLeader
 
