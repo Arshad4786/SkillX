@@ -1,27 +1,54 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}SkillConnect{% endblock %}</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/about/">About</a>
-            <a href="/contact/">Contact</a>
-        </nav>
+<body class="bg-gray-100 text-gray-900">
+    <!-- Header Section -->
+    <header class="bg-blue-700 py-4">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-3xl text-white font-bold">
+                <a href="/">SkillConnect</a>
+            </h1>
+            <nav class="space-x-6">
+                <a href="/" class="text-white hover:text-gray-300">Home</a>
+                <a href="/about/" class="text-white hover:text-gray-300">About</a>
+                <a href="/contact/" class="text-white hover:text-gray-300">Contact</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        {% block content %}{% endblock %}
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-10">
+        {% block content %}
+        <section class="text-center">
+            <h2 class="text-4xl font-semibold text-gray-800 mb-4">Welcome to SkillConnect</h2>
+            <p class="text-lg text-gray-600 mb-6">A platform to discover top talent and connect with professionals.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="/register/" class="bg-green-500 text-white px-6 py-3 rounded hover:bg-green-400 text-lg">Talent Register</a>
+                <a href="#"  class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-400 text-lg">Client</a>
+            </div>
+        </section>
+        {% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 SkillConnect</p>
+    <!-- Footer Section -->
+    <footer class="bg-blue-700 text-white py-6 mt-10">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 SkillConnect. All Rights Reserved.</p>
+            <div class="mt-4">
+                <a href="#" class="mx-4 text-white hover:text-gray-300">FB</a>
+                <a href="#" class="mx-4 text-white hover:text-gray-300">TW</a>
+                <a href="#" class="mx-4 text-white hover:text-gray-300">IG</a>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

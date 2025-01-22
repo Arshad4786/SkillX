@@ -1,0 +1,127 @@
+/* Custom Styles for SkillConnect */
+
+/* Utility classes for spacing, colors, and fonts */
+
+/* Global Styles */
+body {
+     font-family: 'Arial', sans-serif;
+ }
+ 
+ h1, h2, h3 {
+     font-family: 'Roboto', sans-serif;
+ }
+ 
+ a {
+     text-decoration: none;
+ }
+ 
+ a:hover {
+     text-decoration: underline;
+ }
+ 
+ /* Header Styles */
+ header {
+     background-color: #2d3748;
+ }
+ 
+ header h1 a {
+     font-weight: bold;
+     color: #fff;
+ }
+ 
+ header nav a {
+     color: #fff;
+     text-transform: uppercase;
+     font-size: 16px;
+ }
+ 
+ header nav a:hover {
+     color: #edf2f7;
+ }
+ 
+ /* Button Styling */
+ .bg-yellow-500 {
+     background-color: #fbbf24;
+ }
+ 
+ .bg-yellow-500:hover {
+     background-color: #f59e0b;
+ }
+ 
+ .bg-green-500 {
+     background-color: #10b981;
+ }
+ 
+ .bg-green-500:hover {
+     background-color: #059669;
+ }
+ 
+ /* Footer Styles */
+ footer {
+     background-color: #2d3748;
+ }
+ 
+ footer a {
+     color: #fff;
+     font-size: 18px;
+ }
+ 
+ footer a:hover {
+     color: #fbbf24;
+ }
+ 
+ /* Responsive Styles */
+ @media (max-width: 768px) {
+     header .container {
+         flex-direction: column;
+         text-align: center;
+     }
+ 
+     header h1 {
+         margin-bottom: 15px;
+     }
+ 
+     header nav {
+         margin-top: 10px;
+     }
+ 
+     footer .container {
+         padding-left: 15px;
+         padding-right: 15px;
+     }
+ }
+ /* Styling for all input fields */
+.input-field {
+     width: 100%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     box-sizing: border-box;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     font-size: 16px;
+     background-color: #f4f4f4;
+ }
+ 
+ /* Focus effect */
+ .input-field:focus {
+     border-color: #4CAF50;
+     background-color: #ffffff;
+ }
+ 
+ /* Styling for the submit button */
+ button[type="submit"] {
+     background-color: #4CAF50;
+     color: white;
+     padding: 14px 20px;
+     margin: 8px 0;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     font-size: 16px;
+     width: 100%;
+ }
+ 
+ button[type="submit"]:hover {
+     background-color: #45a049;
+ }
+ 
