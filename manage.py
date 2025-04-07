@@ -20,5 +20,5 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-hello command234oiuytf
+for i in range(24):
+    print(i)
